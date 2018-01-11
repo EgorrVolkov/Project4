@@ -14,7 +14,6 @@ public class MainController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        String commandName = request.getParameter("command321");
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/login.jsp");
         dispatcher.forward(request, response);
     }
@@ -22,7 +21,10 @@ public class MainController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-
+         if(request.getParameter("command321").equals("login123")) {
+             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/registration.jsp");
+             dispatcher.forward(request, response);
+         }
     }
 
 }
