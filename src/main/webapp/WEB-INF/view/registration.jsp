@@ -2,9 +2,9 @@
 <%@include file="/WEB-INF/view/multilang.jsp" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Registration</title>
 </head>
 <body>
-$END$
+    Registration page
 </body>
 </html>

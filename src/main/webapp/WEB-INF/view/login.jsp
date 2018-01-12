@@ -6,7 +6,7 @@
 </head>
 <body>
 <form action="/" method="POST">
-    <div><input name="command321" value="login123" type="hidden"/></div>
+    <div><input name="command" value="login" type="hidden"/></div>
     <div class="form-group">
         <label for="username"><fmt:message key="username" />:</label>
         <input type="text" id="username" name="username">
@@ -16,10 +16,8 @@
         <input type="password" id="password" name="password">
     </div>
     <fmt:message key="logIn" var="buttonValue" />
-    <input type="submit" name="login" value="${buttonValue}">
-
-<%--    <fmt:message key="registration" var="buttonValue" />
-    <input type="submit" name="registration" value="${buttonValue}">--%>
+    <button type="submit" class="btn btn-primary"><fmt:message key="logIn"/></button>
+    <a href="/?command=registrationPage" class="btn"><fmt:message key="registration"/></a>
 </form>
 </body>
 </html>
