@@ -4,11 +4,9 @@ import ua.training.util.constant.general.Pages;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class LoginCommand implements Command {
-
+public class RegistrationCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return Pages.LOGIN;
+        return Pages.REGISTRATION;
     }
 }

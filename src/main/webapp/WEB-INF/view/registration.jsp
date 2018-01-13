@@ -1,10 +1,15 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/view/multilang.jsp" %>
-<html>
+<html lang="${language}">
 <head>
-    <title>Registration</title>
+    <title><fmt:message key="registration"/></title>
 </head>
 <body>
-    Registration page
+<form action="/" method="POST">
+    <fmt:message key="registrationSuccessful"/>
+    <br>
+    <fmt:message key="login" var="buttonValue"/>
+    <button name="command" value="loginPage" type="submit" class="btn btn-primary"><fmt:message key="login"/></button>
+</form>
 </body>
 </html>

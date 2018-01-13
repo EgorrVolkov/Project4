@@ -9,6 +9,6 @@ public class RegistrationPageCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return Pages.REGISTRATION;
+        return Pages.REGISTRATION_PAGE;
     }
 }

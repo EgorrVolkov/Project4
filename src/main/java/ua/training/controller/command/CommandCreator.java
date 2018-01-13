@@ -13,7 +13,10 @@ public class CommandCreator {
 
     private CommandCreator() {
         commandMap.put(LOGIN_COMMAND, new LoginCommand());
+        commandMap.put(LOGIN_PAGE_COMMAND, new LoginPageCommand());
+        commandMap.put(REGISTRATION_COMMAND, new RegistrationCommand());
         commandMap.put(REGISTRATION_PAGE_COMMAND, new RegistrationPageCommand());
+
     }
 
     private static class CommandFactoryHolder {
@@ -26,7 +29,11 @@ public class CommandCreator {
 
     public String action(HttpServletRequest request, HttpServletResponse response) throws RuntimeException {
         String commandName = request.getParameter(COMMAND);
-        Command command = commandMap.get(commandName);
+        Command command;
+        if(commandName == null)
+            command = commandMap.get(LOGIN_PAGE_COMMAND);
+        else
+            command = commandMap.get(commandName);
         return command.execute(request, response);
     }
 }

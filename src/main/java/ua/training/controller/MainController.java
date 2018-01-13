@@ -18,21 +18,21 @@ public class MainController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/login.jsp");
-        dispatcher.forward(request, response);
+        processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        String pageToRedirectOn;
-        pageToRedirectOn = commandCreator.action(request, response);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(pageToRedirectOn);
-        dispatcher.forward(request, response);
+        processRequest(request, response);
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-/*        String pageToRedirectOn;
-        pageToRedirectOn = commandCreator.action(request, response);*/
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String pageToRedirectOn;
+        /*(String)request.getSession().getAttribute("page");*/
+        pageToRedirectOn = commandCreator.action(request, response);
+        request.getSession().setAttribute("page", pageToRedirectOn);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(pageToRedirectOn);
+        dispatcher.forward(request, response);
     }
 }
