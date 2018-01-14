@@ -29,7 +29,6 @@ public class MainController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageToRedirectOn;
-        /*(String)request.getSession().getAttribute("page");*/
         pageToRedirectOn = commandCreator.action(request, response);
         request.getSession().setAttribute("page", pageToRedirectOn);
         RequestDispatcher dispatcher = request.getRequestDispatcher(pageToRedirectOn);
