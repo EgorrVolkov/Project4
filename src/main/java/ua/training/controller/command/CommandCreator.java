@@ -19,7 +19,7 @@ public class CommandCreator {
         commandMap.put(LOGIN_PAGE_COMMAND, new LoginPageCommand());
         commandMap.put(REGISTRATION_COMMAND, new RegistrationCommand());
         commandMap.put(REGISTRATION_PAGE_COMMAND, new RegistrationPageCommand());
-
+        commandMap.put(LANGUAGE_COMMAND, new LanguageCommand());
     }
 
     private static class CommandFactoryHolder {

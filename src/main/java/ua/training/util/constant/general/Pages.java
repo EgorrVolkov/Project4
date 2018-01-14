@@ -6,5 +6,4 @@ public interface Pages {
     String REGISTRATION_PAGE = "WEB-INF/view/registrationPage.jsp";
     String REGISTRATION = "WEB-INF/view/registration.jsp";
     String ERROR = "WEB-INF/view/error.jsp";
-
 }
