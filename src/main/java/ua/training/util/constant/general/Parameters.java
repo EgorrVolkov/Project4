@@ -6,5 +6,9 @@ public interface Parameters {
     String EN_US = "en_US";
     String RU_RU = "ru_RU";
     String LANGUAGE = "lang";
+    String EMAIL = "email";
+    String PASSWORD = "password";
+    String ADMIN = "admin";
+    String USER = "user";
 }
 

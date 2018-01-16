@@ -36,7 +36,7 @@ public class CommandCreator {
 
         Command command;
         if(commandName == null) {
-            if(request.getSession().getAttribute("page") != null) { // TODO REWORK, lambdas!!!!
+/*            if(request.getSession().getAttribute("page") != null) { // TODO REWORK, lambdas!!!!
                 // TODO maybe make a method for this expression: request.getSession().getAttribute("page") ?
                 Pattern findPageName = Pattern.compile("[^/.]+(?=\\.[^.]+)");
                 Matcher pageURL = findPageName.matcher((String)request.getSession().getAttribute("page")); // TODO refactor.rename, it's not URL probably!
@@ -44,7 +44,7 @@ public class CommandCreator {
                     command = commandMap.get(pageURL.group(0));
                 else command = commandMap.get(ERROR_PAGE); // TODO stub, rework somehow!
             }
-            else
+            else*/
                 command = commandMap.get(LOGIN_PAGE_COMMAND);
         }
         else
