@@ -4,6 +4,7 @@ public interface UserConstants {
     String TABLE = "user";
     String ID = "id";
     String EMAIL = "email";
+    String LOGIN = "login";
     String PASSWORD = "password";
     String FIRST_NAME = "first_name";
     String LAST_NAME = "last_name";

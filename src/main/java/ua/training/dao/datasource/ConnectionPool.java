@@ -15,7 +15,7 @@ public class ConnectionPool {
     private static DataSource initDataSource() {
         try {
             InitialContext initialContext = new InitialContext();
-            return (DataSource) initialContext.lookup("java:comp/env/jdbc/todelete");
+            return (DataSource) initialContext.lookup("java:comp/env/jdbc/repair_agency");
         } catch (NamingException e) {
             return null;
         }

@@ -2,6 +2,7 @@ package ua.training.controller;
 
 import ua.training.controller.command.CommandCreator;
 import ua.training.util.constant.general.Pages;
+import ua.training.util.constant.general.Parameters;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,6 +32,7 @@ public class MainController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageToRedirectOn;
         try {
+            request.getSession().removeAttribute(Parameters.EXCEPTION); // TODO find out the point
             pageToRedirectOn = commandCreator.action(request, response);
             request.getSession().setAttribute("page", pageToRedirectOn);
         }

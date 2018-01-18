@@ -15,8 +15,8 @@
         <input type="text" id="secondName" name="secondName">
     </div>
     <div class="form-group">
-        <label for="username"><fmt:message key="nickname" bundle="${bundle}"/>:</label>
-        <input type="text" id="username" name="username">
+        <label for="login"><fmt:message key="login" bundle="${bundle}"/>:</label>
+        <input type="text" id="login" name="login">
     </div>
     <div class="form-group">
         <label for="email">E-mail:</label>
@@ -26,8 +26,8 @@
         <label for="password"><fmt:message key="password" bundle="${bundle}"/>:</label>
         <input type="password" id="password" name="password">
     </div>
-    <fmt:message key="login" var="buttonValue" bundle="${bundle}"/>
-    <button name="command" value="loginPage" type="submit" class="btn btn-primary"><fmt:message key="login" bundle="${bundle}"/></button>
+    <fmt:message key="signIn" var="buttonValue" bundle="${bundle}"/>
+    <button name="command" value="signInPage" type="submit" class="btn btn-primary"><fmt:message key="signIn" bundle="${bundle}"/></button>
     <button name="command" value="registration" type="submit" class="btn btn-primary"><fmt:message key="registration" bundle="${bundle}"/></button>
 </form>
 </body>

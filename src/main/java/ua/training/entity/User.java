@@ -7,6 +7,7 @@ import java.util.List;
 public class User implements Entity<Long> {
     private Long id;
     private String email;
+    private String login;
     private String password;
     private String firstName;
     private String lastName;
@@ -31,6 +32,15 @@ public class User implements Entity<Long> {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
 
     public String getPassword() {
         return password;

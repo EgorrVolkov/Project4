@@ -8,8 +8,8 @@
 <form action="/" method="POST">
     <fmt:message key="registrationSuccessful" bundle="${bundle}"/>
     <br>
-    <fmt:message key="login" var="buttonValue" bundle="${bundle}"/>
-    <button name="command" value="loginPage" type="submit" class="btn btn-primary"><fmt:message key="login" bundle="${bundle}"/></button>
+    <fmt:message key="signIn" var="buttonValue" bundle="${bundle}"/>
+    <button name="command" value="signInPage" type="submit" class="btn btn-primary"><fmt:message key="signIn" bundle="${bundle}"/></button>
 </form>
 </body>
 </html>

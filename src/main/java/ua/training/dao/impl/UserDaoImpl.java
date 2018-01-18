@@ -18,15 +18,15 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public User findByEmail(String email) throws SQLException {
+    public User findByLogin(String login) throws SQLException {
         String query = new QueryBuilder()
                 .selectAll()
                 .from()
                 .table(TABLE)
                 .where()
-                .condition(TABLE, EMAIL)
+                .condition(TABLE, LOGIN)
                 .build();
-        return getEntityByQuery(query, email);
+        return getEntityByQuery(query, login);
     }
 
     @Override

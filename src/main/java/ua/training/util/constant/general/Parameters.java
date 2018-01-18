@@ -7,8 +7,11 @@ public interface Parameters {
     String RU_RU = "ru_RU";
     String LANGUAGE = "lang";
     String EMAIL = "email";
+    String LOGIN = "login";
     String PASSWORD = "password";
     String ADMIN = "admin";
     String USER = "user";
+    String X_AUTH_TOKEN = "token";
+    String EXCEPTION = "exception";
 }
 

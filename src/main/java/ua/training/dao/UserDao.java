@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDao extends CrudDao<User, Long> {
-    User findByEmail(String email) throws SQLException;
+    User findByLogin(String login) throws SQLException;
 
     void setUserRole(Long userId, Long roleId);
 
