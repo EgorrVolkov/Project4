@@ -21,6 +21,8 @@ public class CommandCreator {
         commandMap.put(REGISTRATION_COMMAND, new RegistrationCommand(serviceFactory.createUserService()));
         commandMap.put(REGISTRATION_PAGE_COMMAND, new RegistrationPageCommand());
         commandMap.put(LANGUAGE_COMMAND, new LanguageCommand());
+        commandMap.put(MANAGER_PAGE_COMMAND, new ManagerPageCommand());
+        commandMap.put(ENGINEER_PAGE_COMMAND, new EngineerPageCommand());
     }
 
     private static class CommandFactoryHolder {

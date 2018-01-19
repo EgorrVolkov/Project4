@@ -6,6 +6,7 @@ public interface Commands {
     String REGISTRATION_COMMAND = "registration";
     String REGISTRATION_PAGE_COMMAND = "registrationPage";
     String LANGUAGE_COMMAND = "setLang";
-    String ERROR_PAGE = "errorPage";
+    String MANAGER_PAGE_COMMAND = "managerPage";
+    String ENGINEER_PAGE_COMMAND = "engineerPage";
     String COMMAND = "command";
 }
