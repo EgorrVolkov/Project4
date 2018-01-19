@@ -1,6 +1,5 @@
 package ua.training.dao;
 
-import ua.training.dao.CrudDao;
 import ua.training.dao.util.QueryBuilder;
 import ua.training.entity.Entity;
 

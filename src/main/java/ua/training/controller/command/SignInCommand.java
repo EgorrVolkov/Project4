@@ -13,7 +13,6 @@ import static ua.training.util.constant.general.Global.*;
 import static ua.training.util.constant.general.Parameters.*;
 import static ua.training.util.constant.general.Parameters.EXCEPTION;
 
-
 public class SignInCommand implements Command {
 
     private UserService userService;
@@ -46,10 +45,12 @@ public class SignInCommand implements Command {
 
     private void setUserRolesIntoSession(HttpServletRequest request, User user) {
         for (Role role : user.getRoles()) {
-            if (ADMIN_ROLE.equals(role.getName())) {
-                request.getSession().setAttribute(ADMIN, true);
-            } else if (USER_ROLE.equals(role.getName())) {
+            if (USER_ROLE.equals(role.getName())) {
                 request.getSession().setAttribute(USER, true);
+            } else if (MANAGER_ROLE.equals(role.getName())) {
+                request.getSession().setAttribute(MANAGER, true);
+            } else if (ENGINEER_ROLE.equals(role.getName())) {
+                request.getSession().setAttribute(ENGINEER, true);
             }
         }
     }

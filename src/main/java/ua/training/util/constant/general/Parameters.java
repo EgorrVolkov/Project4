@@ -9,8 +9,9 @@ public interface Parameters {
     String EMAIL = "email";
     String LOGIN = "login";
     String PASSWORD = "password";
-    String ADMIN = "admin";
+    String MANAGER = "manager";
     String USER = "user";
+    String ENGINEER = "engineer";
     String X_AUTH_TOKEN = "token";
     String EXCEPTION = "exception";
 }

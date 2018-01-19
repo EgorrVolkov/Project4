@@ -11,7 +11,6 @@ public class User implements Entity<Long> {
     private String password;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
     private List<Role> roles;
     //private List<Order> orders;
 
@@ -23,31 +22,6 @@ public class User implements Entity<Long> {
     @Override
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {
@@ -66,12 +40,28 @@ public class User implements Entity<Long> {
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getLogin() {
+        return login;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Role> getRoles() {
@@ -92,26 +82,15 @@ public class User implements Entity<Long> {
 
     public static final class UserBuilder {
         private Long id;
-        private String email;
-        private String password;
         private String firstName;
         private String lastName;
-        private String phoneNumber;
+        private String email;
+        private String password;
         private List<Role> roles;
         //private List<Order> orders;
 
         public UserBuilder setId(Long id) {
             this.id = id;
-            return this;
-        }
-
-        public UserBuilder setEmail(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public UserBuilder setPassword(String password) {
-            this.password = password;
             return this;
         }
 
@@ -125,8 +104,13 @@ public class User implements Entity<Long> {
             return this;
         }
 
-        public UserBuilder setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
+        public UserBuilder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UserBuilder setPassword(String password) {
+            this.password = password;
             return this;
         }
 
@@ -143,11 +127,10 @@ public class User implements Entity<Long> {
         public User buildUser() {
             User user = new User();
             user.setId(id);
-            user.setEmail(email);
-            user.setPassword(password);
             user.setFirstName(firstName);
             user.setLastName(lastName);
-            user.setPhoneNumber(phoneNumber);
+            user.setEmail(email);
+            user.setPassword(password);
             user.setRoles(roles);
             //user.setOrders(orders);
             return user;
@@ -156,11 +139,10 @@ public class User implements Entity<Long> {
         public User buildUserProxy() {
             UserProxy user = new UserProxy();
             user.setId(id);
-            user.setEmail(email);
-            user.setPassword(password);
             user.setFirstName(firstName);
             user.setLastName(lastName);
-            user.setPhoneNumber(phoneNumber);
+            user.setEmail(email);
+            user.setPassword(password);
             user.setRoles(roles);
             //user.setOrders(orders);
             return user;
