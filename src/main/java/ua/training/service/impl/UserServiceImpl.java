@@ -114,9 +114,7 @@ public class UserServiceImpl implements UserService {
     }
 
     boolean isPasswordValid(String password) {
-        if (password.length() < 8 || password.length() > 20)
-            return false;
-        final String regex = "^[a-zA-Z0-9!@#$%^&*()_+|~\\-=\\/‘\\{\\}\\[\\]:\";’<>?,./]+$";
+        final String regex = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(regex);
         java.util.regex.Matcher m = p.matcher(password);
         return m.matches();

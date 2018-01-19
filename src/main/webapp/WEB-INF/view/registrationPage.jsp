@@ -11,8 +11,8 @@
         <input type="text" id="firstName" name="firstName">
     </div>
     <div class="form-group">
-        <label for="secondName"><fmt:message key="secondName" bundle="${bundle}"/>:</label>
-        <input type="text" id="secondName" name="secondName">
+        <label for="lastName"><fmt:message key="lastName" bundle="${bundle}"/>:</label>
+        <input type="text" id="lastName" name="lastName">
     </div>
     <div class="form-group">
         <label for="login"><fmt:message key="login" bundle="${bundle}"/>:</label>

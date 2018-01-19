@@ -18,7 +18,7 @@ public class CommandCreator {
     private CommandCreator() {
         commandMap.put(SIGNIN_COMMAND, new SignInCommand(serviceFactory.createUserService()));
         commandMap.put(SIGNIN_PAGE_COMMAND, new SignInPageCommand());
-        commandMap.put(REGISTRATION_COMMAND, new RegistrationCommand());
+        commandMap.put(REGISTRATION_COMMAND, new RegistrationCommand(serviceFactory.createUserService()));
         commandMap.put(REGISTRATION_PAGE_COMMAND, new RegistrationPageCommand());
         commandMap.put(LANGUAGE_COMMAND, new LanguageCommand());
     }

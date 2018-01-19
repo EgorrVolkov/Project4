@@ -66,15 +66,16 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     protected String[] getParameterNames() {
-        return new String[]{EMAIL, PASSWORD, FIRST_NAME, LAST_NAME};
+        return new String[]{FIRST_NAME, LAST_NAME, LOGIN, EMAIL, PASSWORD};
     }
 
     @Override
     protected void setEntityParameters(User user, PreparedStatement statement) throws SQLException {
-        statement.setString(1, user.getEmail());
-        statement.setString(2, user.getPassword());
-        statement.setString(3, user.getFirstName());
-        statement.setString(4, user.getLastName());
+        statement.setString(1, user.getFirstName());
+        statement.setString(2, user.getLastName());
+        statement.setString(3, user.getLogin());
+        statement.setString(4, user.getEmail());
+        statement.setString(5, user.getPassword());
     }
 
     @Override
@@ -82,12 +83,14 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         Long id = Long.valueOf(resultSet.getString(ID));
         String firstName = resultSet.getString(FIRST_NAME);
         String lastName = resultSet.getString(LAST_NAME);
+        String login = resultSet.getString(LOGIN);
         String email = resultSet.getString(EMAIL);
         String password = resultSet.getString(PASSWORD);
         return new UserProxy.UserBuilder()
                 .setId(id)
                 .setFirstName(firstName)
                 .setLastName(lastName)
+                .setLogin(login)
                 .setEmail(email)
                 .setPassword(password)
                 .buildUserProxy();

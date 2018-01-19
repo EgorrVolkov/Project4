@@ -84,6 +84,7 @@ public class User implements Entity<Long> {
         private Long id;
         private String firstName;
         private String lastName;
+        private String login;
         private String email;
         private String password;
         private List<Role> roles;
@@ -101,6 +102,11 @@ public class User implements Entity<Long> {
 
         public UserBuilder setLastName(String lastName) {
             this.lastName = lastName;
+            return this;
+        }
+
+        public UserBuilder setLogin(String login) {
+            this.login = login;
             return this;
         }
 
@@ -129,6 +135,7 @@ public class User implements Entity<Long> {
             user.setId(id);
             user.setFirstName(firstName);
             user.setLastName(lastName);
+            user.setLogin(login);
             user.setEmail(email);
             user.setPassword(password);
             user.setRoles(roles);
@@ -141,6 +148,7 @@ public class User implements Entity<Long> {
             user.setId(id);
             user.setFirstName(firstName);
             user.setLastName(lastName);
+            user.setLogin(login); // TODO necessary?
             user.setEmail(email);
             user.setPassword(password);
             user.setRoles(roles);
