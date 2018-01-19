@@ -14,5 +14,8 @@ public interface Parameters {
     String ENGINEER = "engineer";
     String X_AUTH_TOKEN = "token";
     String EXCEPTION = "exception";
+    String DEVICE_NAME = "deviceName";
+    String DEVICE_PRICE = "devicePrice";
+    String DEVICE_BREAKAGE = "deviceBreakage";
 }
 

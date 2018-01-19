@@ -8,5 +8,6 @@ public interface Commands {
     String LANGUAGE_COMMAND = "setLang";
     String MANAGER_PAGE_COMMAND = "managerPage";
     String ENGINEER_PAGE_COMMAND = "engineerPage";
+    String CREATE_ORDER_COMMAND = "createOrder";
     String COMMAND = "command";
 }
