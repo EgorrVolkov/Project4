@@ -23,7 +23,6 @@ public class CommandCreator {
         commandMap.put(LANGUAGE_COMMAND, new LanguageCommand());
         commandMap.put(MANAGER_PAGE_COMMAND, new ManagerPageCommand());
         commandMap.put(ENGINEER_PAGE_COMMAND, new EngineerPageCommand());
-        commandMap.put(CREATE_ORDER_COMMAND, new CreateOrderCommand());
     }
 
     private static class CommandFactoryHolder {
