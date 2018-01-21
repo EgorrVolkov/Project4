@@ -9,12 +9,11 @@ import ua.training.entity.User;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 public class UserProxy extends User {
     @Override
-    public List<Role> getRoles() {
-        if (super.getRoles() == null) {
+    public Role getRole() {
+        if (super.getRole() == null) {
             DataSource dataSource = DataSourceFactory.getInstance().getDataSource();
             try (Connection connection = dataSource.getConnection()) {
                 DaoFactory daoFactory = DaoFactory.getDaoFactory(connection);
@@ -25,6 +24,6 @@ public class UserProxy extends User {
             }
             return null;
         }
-        return super.getRoles();
+        return super.getRole();
     }
 }

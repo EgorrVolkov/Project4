@@ -30,6 +30,38 @@ public class QueryBuilder {
         return this;
     }
 
+    public QueryBuilder innerJoin() {
+        query
+                .append("INNER")
+                .append(" ")
+                .append("JOIN")
+                .append(" ");
+        return this;
+    }
+
+    public QueryBuilder on() {
+        query
+                .append("ON")
+                .append(" ");
+        return this;
+    }
+
+    public QueryBuilder queryEquals() {
+        query
+                .append("=")
+                .append(" ");
+        return this;
+    }
+
+    public QueryBuilder tableColumn(String tableName, String column) {
+        query
+                .append(tableName)
+                .append(".")
+                .append(column)
+                .append(" ");
+        return this;
+    }
+
     public QueryBuilder insertValues(String[] names) {
         query.append("(");
         int length = names.length;

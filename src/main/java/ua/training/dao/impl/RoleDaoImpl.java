@@ -10,14 +10,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Objects;
 
 import static ua.training.util.constant.table.RoleConstants.*;
 
 public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
 
     private RoleDaoImpl(Connection connection) {
-        super(TABLE, connection);
+        super(ROLE_TABLE, connection);
     }
 
     private static final class RoleDaoImplHolder {
@@ -35,23 +35,30 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
         String query = new QueryBuilder()
                 .selectAll()
                 .from()
-                .table(TABLE)
+                .table(ROLE_TABLE)
                 .where()
-                .condition(TABLE, NAME)
+                .condition(ROLE_TABLE, NAME)
                 .build();
         return getEntityByQuery(query, value);
     }
 
     @Override
-    public List<Role> findByUser(Long userId) throws SQLException {
+    public Role findByUser(Long userId) throws SQLException {
         String query = new QueryBuilder()
-        .selectAll()
-        .from()
-        .table(TABLE)
-        .where()
-        .condition(TABLE, ID)
-        .build();
-        return getEntityListByQuery(query, userId);
+                // SELECT * FROM user_role INNER JOIN user ON user_role.id = user.role_id WHERE user.id = ?;
+                .selectAll()
+                .from()
+                .table(ROLE_TABLE)
+                .innerJoin()
+                .table(USER_TABLE)
+                .on()
+                .tableColumn(ROLE_TABLE, ID)
+                .queryEquals()
+                .tableColumn(USER_TABLE, ROLE_ID)
+                .where()
+                .condition(USER_TABLE, ID)
+                .build();
+        return getEntityByQuery(query, Objects.toString(userId, null));
     }
 
     @Override

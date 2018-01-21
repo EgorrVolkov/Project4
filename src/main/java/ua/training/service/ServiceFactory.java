@@ -21,9 +21,4 @@ public class ServiceFactory {
     public UserService createUserService() {
         return UserServiceImpl.getInstance();
     }
-
-
-/*    public AdminService createAdminService() { // TODO
-        return AdminServiceImpl.getInstance(createOrderService(), createVanService());
-    }*/
 }

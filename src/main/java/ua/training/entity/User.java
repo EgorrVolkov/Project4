@@ -2,8 +2,6 @@ package ua.training.entity;
 
 import ua.training.entity.proxy.UserProxy;
 
-import java.util.List;
-
 public class User implements Entity<Long> {
     private Long id;
     private String email;
@@ -11,8 +9,7 @@ public class User implements Entity<Long> {
     private String password;
     private String firstName;
     private String lastName;
-    private List<Role> roles;
-    //private List<Order> orders;
+    private Role role;
 
     @Override
     public Long getId() {
@@ -64,21 +61,13 @@ public class User implements Entity<Long> {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
-
-    /*public List<Order> getOrders() {
-        return orders;
-    }*/
-
-    /*public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }*/
 
     public static final class UserBuilder {
         private Long id;
@@ -87,8 +76,7 @@ public class User implements Entity<Long> {
         private String login;
         private String email;
         private String password;
-        private List<Role> roles;
-        //private List<Order> orders;
+        private Role role;
 
         public UserBuilder setId(Long id) {
             this.id = id;
@@ -120,15 +108,10 @@ public class User implements Entity<Long> {
             return this;
         }
 
-        public UserBuilder setRoles(List<Role> roles) {
-            this.roles = roles;
+        public UserBuilder setRole(Role role) {
+            this.role = role;
             return this;
         }
-
-/*        public UserBuilder setOrders(List<Order> orders) {
-            this.orders = orders;
-            return this;
-        }*/
 
         public User buildUser() {
             User user = new User();
@@ -138,8 +121,7 @@ public class User implements Entity<Long> {
             user.setLogin(login);
             user.setEmail(email);
             user.setPassword(password);
-            user.setRoles(roles);
-            //user.setOrders(orders);
+            user.setRole(role);
             return user;
         }
 
@@ -151,8 +133,7 @@ public class User implements Entity<Long> {
             user.setLogin(login); // TODO necessary?
             user.setEmail(email);
             user.setPassword(password);
-            user.setRoles(roles);
-            //user.setOrders(orders);
+            user.setRole(role);
             return user;
         }
     }

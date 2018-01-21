@@ -8,9 +8,9 @@ public interface UserConstants {
     String PASSWORD = "password";
     String FIRST_NAME = "first_name";
     String LAST_NAME = "last_name";
-    String PHONE_NUMBER = "phone_number";
-    int NUMBER_OF_FIELDS_WITHOUT_ID = 5;
+    String ROLE_ID = "role_id";
     String USER_ROLE_TABLE = "user_role";
     String USER_COLUMN = "user";
     String ROLE_COLUMN = "role";
+    int DEFAULT_ROLE_ID = 2; // TODO maybe rework and delete this constant?
 }

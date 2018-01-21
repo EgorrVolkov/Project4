@@ -65,10 +65,10 @@ public class UserServiceImpl implements UserService {
             connection.setAutoCommit(false);
             DaoFactory daoFactory = DaoFactory.getDaoFactory(connection);
             UserDao userDao = daoFactory.createUserDao();
-            RoleDao roleDao = daoFactory.createRoleDao();
-            Role role = roleDao.findByName(USER_ROLE);
+            //RoleDao roleDao = daoFactory.createRoleDao();
+            //Role role = roleDao.findByName(USER_ROLE);
             savedUser = userDao.save(user);
-            userDao.setUserRole(savedUser.getId(), role.getId());
+            //userDao.setUserRole(savedUser.getId(), role.getId());
             connection.commit();
         } catch (SQLIntegrityConstraintViolationException e) {
             ConnectionUtil.rollback(connection);

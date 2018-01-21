@@ -43,15 +43,14 @@ public class SignInCommand implements Command {
         return Pages.SIGNIN;
     }
 
-    private void setUserRolesIntoSession(HttpServletRequest request, User user) {
-        for (Role role : user.getRoles()) {
-            if (USER_ROLE.equals(role.getName())) {
-                request.getSession().setAttribute(USER, true);
-            } else if (MANAGER_ROLE.equals(role.getName())) {
-                request.getSession().setAttribute(MANAGER, true);
-            } else if (ENGINEER_ROLE.equals(role.getName())) {
-                request.getSession().setAttribute(ENGINEER, true);
-            }
+    private void setUserRolesIntoSession(HttpServletRequest request, User user) { // TODO enhance!!!
+        Role role = user.getRole();
+        if (USER_ROLE.equals(role.getName())) {
+            request.getSession().setAttribute(USER, true);
+        } else if (MANAGER_ROLE.equals(role.getName())) {
+            request.getSession().setAttribute(MANAGER, true);
+        } else if (ENGINEER_ROLE.equals(role.getName())) {
+            request.getSession().setAttribute(ENGINEER, true);
         }
     }
 }

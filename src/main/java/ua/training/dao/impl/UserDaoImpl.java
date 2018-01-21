@@ -47,10 +47,10 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public List<User> findByRole(Long roleId) throws SQLException {
-        String query = "SELECT u.* FROM `user_role` ur \n" +
-                "inner join `user` u ON ur.user = u.id\n" +
-                "where ur.role = ?";
+    public List<User> findByRole(Long roleId) throws SQLException { // TODO implement via QueryBuilder!
+        String query = "SELECT * FROM user \n" +
+                "INNER JOIN user_role ON user_role.id = user.role_id\n" +
+                "where user_role.id = ?";
         return getEntityListByQuery(query, roleId);
     }
 
@@ -66,7 +66,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     protected String[] getParameterNames() {
-        return new String[]{FIRST_NAME, LAST_NAME, LOGIN, EMAIL, PASSWORD};
+        return new String[]{FIRST_NAME, LAST_NAME, LOGIN, EMAIL, PASSWORD, ROLE_ID};
     }
 
     @Override
@@ -76,6 +76,8 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         statement.setString(3, user.getLogin());
         statement.setString(4, user.getEmail());
         statement.setString(5, user.getPassword());
+        // TODO is it ok? Maybe invoke some method to find by "USER_ROLE" from globalConstants???
+        statement.setInt(6, DEFAULT_ROLE_ID);
     }
 
     @Override
