@@ -32,12 +32,8 @@ public class CommandCreator {
         commandMap.put(SELECT_BREAKAGE_PAGE_COMMAND, new SelectBreakagePageCommand());
     }
 
-    private static class CommandFactoryHolder {
-        private static final CommandCreator instance = new CommandCreator();
-    }
-
     public static CommandCreator getInstance() {
-        return CommandFactoryHolder.instance;
+        return new CommandCreator();
     }
 
     public String action(HttpServletRequest request, HttpServletResponse response) throws RuntimeException {

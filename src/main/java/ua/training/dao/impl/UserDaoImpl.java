@@ -54,14 +54,8 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         return getEntityListByQuery(query, roleId);
     }
 
-    private static class UserDaoImplHolder {
-        private static UserDaoImpl instance(Connection connection) {
-            return new UserDaoImpl(connection);
-        }
-    }
-
     public static UserDaoImpl getInstance(Connection connection) {
-        return UserDaoImplHolder.instance(connection);
+        return new UserDaoImpl(connection);
     }
 
     @Override

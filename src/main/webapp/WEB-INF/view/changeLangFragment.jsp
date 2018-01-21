@@ -1,7 +1,4 @@
-<%--TODO rename file!--%>
 <%--TODO find out what value="${page}" means--%>
-<%--TODO input type radio, deleted fragments: " id="lang" ", find out for what they where...--%>
-<%--TODO [loginPage, EN] - [login, EN] - [login, RU] - [back] - [back] - [RegistrationPage, WTF lang?]--%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

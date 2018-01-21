@@ -6,12 +6,8 @@ public class ServiceFactory {
     private ServiceFactory() {
     }
 
-    private static class ServiceFactoryHolder {
-        private static ServiceFactory instance = new ServiceFactory();
-    }
-
     public static ServiceFactory getInstance() {
-        return ServiceFactoryHolder.instance;
+        return new ServiceFactory();
     }
 
 /*    public OrderService createOrderService() { // TODO

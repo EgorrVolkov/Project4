@@ -22,14 +22,8 @@ public class MySqlDaoFactory extends DaoFactory {
         return UserDaoImpl.getInstance(connection);
     }
 
-    private static class MySqlDaoFactoryHolder {
-        private static MySqlDaoFactory instance(Connection connection) {
-            return new MySqlDaoFactory(connection);
-        }
-    }
-
     public static MySqlDaoFactory getInstance(Connection connection) {
-        return MySqlDaoFactoryHolder.instance(connection);
+        return new MySqlDaoFactory(connection);
     }
 
 }

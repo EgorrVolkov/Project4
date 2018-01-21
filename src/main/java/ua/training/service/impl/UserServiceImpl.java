@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     private UserServiceImpl() {
     }
 
-    public static UserServiceImpl getInstance() { // TODO is this a singleton? If so, remove other holders.
+    public static UserServiceImpl getInstance() {
         return new UserServiceImpl();
     }
 

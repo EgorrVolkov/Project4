@@ -11,12 +11,8 @@ public class DataSourceFactory {
         dataSource = ConnectionPool.getDataSource();
     }
 
-    private static class DataSourceFactoryHolder {
-        private final static DataSourceFactory INSTANCE = new DataSourceFactory();
-    }
-
     public static DataSourceFactory getInstance() {
-        return DataSourceFactoryHolder.INSTANCE;
+        return new DataSourceFactory();
     }
 
     public DataSource getDataSource() {

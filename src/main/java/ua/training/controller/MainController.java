@@ -37,7 +37,7 @@ public class MainController extends HttpServlet {
             request.getSession().setAttribute("page", pageToRedirectOn);
         }
         catch (RuntimeException e) { // TODO rework try-catch?
-            pageToRedirectOn = Pages.ERROR; // TODO internationalize error messages!
+            pageToRedirectOn = Pages.ERROR;
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(pageToRedirectOn);
         dispatcher.forward(request, response);

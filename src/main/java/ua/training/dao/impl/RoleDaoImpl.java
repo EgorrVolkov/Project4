@@ -19,14 +19,8 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
         super(ROLE_TABLE, connection);
     }
 
-    private static final class RoleDaoImplHolder {
-        private static RoleDaoImpl instance(Connection connection) {
-            return new RoleDaoImpl(connection);
-        }
-    }
-
     public static RoleDaoImpl getInstance(Connection connection) {
-        return RoleDaoImplHolder.instance(connection);
+        return new RoleDaoImpl(connection);
     }
 
     @Override
