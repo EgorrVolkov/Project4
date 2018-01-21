@@ -27,15 +27,14 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
                 .table(tableName)
                 .insertValues(getParameterNames())
                 .build();
-        try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-            setEntityParameters(entity, statement);
-            statement.executeUpdate();
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                entity.setId((long) generatedKeys.getInt(1));
-            }
-            return entity;
+        PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        setEntityParameters(entity, statement);
+        statement.executeUpdate();
+        ResultSet generatedKeys = statement.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            entity.setId((long) generatedKeys.getInt(1));
         }
+        return entity;
     }
 
     @Override
@@ -48,12 +47,11 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
                 .where()
                 .condition(tableName, ID)
                 .build();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            setEntityParameters(entity, statement);
-            statement.setLong(getParameterNames().length + 1, entity.getId());
-            statement.executeUpdate();
-            return entity;
-        }
+        PreparedStatement statement = connection.prepareStatement(query);
+        setEntityParameters(entity, statement);
+        statement.setLong(getParameterNames().length + 1, entity.getId());
+        statement.executeUpdate();
+        return entity;
     }
 
     @Override
@@ -76,12 +74,11 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
                 .from()
                 .table(tableName)
                 .build();
-        try (PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                if (getEntityFromResultSet(resultSet) != null) {
-                    result.add(getEntityFromResultSet(resultSet));
-                }
+        PreparedStatement statement = connection.prepareStatement(query);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            if (getEntityFromResultSet(resultSet) != null) {
+                result.add(getEntityFromResultSet(resultSet));
             }
         }
         return result;
@@ -96,10 +93,9 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
                 .where()
                 .condition(tableName, ID)
                 .build();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setLong(1, id);
-            statement.executeUpdate();
-        }
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setLong(1, id);
+        statement.executeUpdate();
     }
 
     public interface UpdateStatement {
@@ -107,13 +103,11 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
     }
 
     public T getEntityByQuery(String query, UpdateStatement updateStatement) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            updateStatement.update(statement);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return getEntityFromResultSet(resultSet);
-                }
-            }
+        PreparedStatement statement = connection.prepareStatement(query);
+        updateStatement.update(statement);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return getEntityFromResultSet(resultSet);
         }
         return null;
     }
