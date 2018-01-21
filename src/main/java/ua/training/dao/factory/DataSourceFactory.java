@@ -4,7 +4,7 @@ import ua.training.dao.datasource.ConnectionPool;
 
 import javax.sql.DataSource;
 
-public class DataSourceFactory { // TODO ?
+public class DataSourceFactory {
     private DataSource dataSource;
 
     private DataSourceFactory() {

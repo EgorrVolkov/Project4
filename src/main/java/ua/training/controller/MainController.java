@@ -32,11 +32,10 @@ public class MainController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageToRedirectOn;
         try {
-            request.getSession().removeAttribute(Parameters.EXCEPTION); // TODO find out the point
             pageToRedirectOn = commandCreator.action(request, response);
             request.getSession().setAttribute("page", pageToRedirectOn);
         }
-        catch (RuntimeException e) { // TODO rework try-catch?
+        catch (RuntimeException e) {
             pageToRedirectOn = Pages.ERROR;
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(pageToRedirectOn);

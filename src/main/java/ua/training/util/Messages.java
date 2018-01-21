@@ -15,7 +15,7 @@ public final class Messages {
         resourceBundle = ResourceBundle.getBundle(BUNDLE_NAME, locale);
     }
 
-    public static String getMessage(String key) { // TODO remove?
+    public static String getMessage(String key) {
         return resourceBundle.getString(key);
     }
 }

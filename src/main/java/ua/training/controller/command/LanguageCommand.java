@@ -1,6 +1,6 @@
 package ua.training.controller.command;
 
-//import ua.training.util.ExceptionMessage; // TODO
+import ua.training.util.ExceptionMessage;
 import ua.training.util.Messages;
 import ua.training.util.constant.general.Parameters;
 
@@ -19,11 +19,11 @@ public class LanguageCommand implements Command {
         if (lang.equals(Parameters.EN)) {
             request.getSession().setAttribute(Parameters.LANGUAGE, Parameters.EN_US);
             Messages.setLocale(Messages.ENGLISH);
-            // ExceptionMessage.setLocale(ExceptionMessage.ENGLISH); // TODO
+            ExceptionMessage.setLocale(ExceptionMessage.ENGLISH);
         } else {
             request.getSession().setAttribute(Parameters.LANGUAGE, Parameters.RU_RU);
             Messages.setLocale(Messages.RUSSIAN);
-            // ExceptionMessage.setLocale(ExceptionMessage.RUSSIAN); // TODO
+            ExceptionMessage.setLocale(ExceptionMessage.RUSSIAN);
         }
     }
 }

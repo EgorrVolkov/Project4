@@ -5,6 +5,5 @@ public interface Global {
     String MANAGER_ROLE = "manager";
     String ENGINEER_ROLE = "engeneer";
     String ID = "id";
-    String NAME = "name";
 }
 

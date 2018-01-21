@@ -71,7 +71,7 @@ public class User implements Entity<Long> {
         return roleId;
     }
 
-    public void setRoleId(int roleId) { // TODO unnecessary?
+    public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
 

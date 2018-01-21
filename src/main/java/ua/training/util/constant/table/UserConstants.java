@@ -11,7 +11,5 @@ public interface UserConstants {
     String LAST_NAME = "last_name";
     String ROLE_ID = "role_id";
     String USER_ROLE_TABLE = "user_role";
-    String USER_COLUMN = "user";
-    String ROLE_COLUMN = "role";
-    int DEFAULT_ROLE_ID = 2; // TODO maybe rework and delete this constant?
+    int DEFAULT_ROLE_ID = 2;
 }

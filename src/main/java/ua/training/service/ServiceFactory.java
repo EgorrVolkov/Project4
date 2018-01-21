@@ -10,10 +10,6 @@ public class ServiceFactory {
         return new ServiceFactory();
     }
 
-/*    public OrderService createOrderService() { // TODO
-        return OrderServiceImpl.getInstance();
-    }*/
-
     public UserService createUserService() {
         return UserServiceImpl.getInstance();
     }
