@@ -25,7 +25,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
                 .where()
                 .condition(TABLE, LOGIN)
                 .build();
-        return getEntityByQuery(query, login);
+        return getEntityByQuery(query, (statement) -> statement.setString(1, login));
     }
 
     public static UserDaoImpl getInstance(Connection connection) {

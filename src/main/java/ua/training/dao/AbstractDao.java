@@ -65,15 +65,7 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
                 .where()
                 .condition(tableName, ID)
                 .build();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setLong(1, id);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return getEntityFromResultSet(resultSet);
-                }
-            }
-        }
-        return null;
+        return getEntityByQuery(query, (statement) -> statement.setLong(1, id));
     }
 
     @Override
@@ -110,9 +102,13 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
         }
     }
 
-    public T getEntityByQuery(String query, String value) throws SQLException {
+    public interface UpdateStatement {
+        void update(PreparedStatement statement) throws SQLException;
+    }
+
+    public T getEntityByQuery(String query, UpdateStatement updateStatement) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, value);
+            updateStatement.update(statement);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return getEntityFromResultSet(resultSet);

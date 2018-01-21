@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 
 import static ua.training.util.constant.table.RoleConstants.*;
 
@@ -24,7 +23,7 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
     }
 
     @Override
-    public Role findByUser(Long userId) throws SQLException {
+    public Role findByUser(final Long userId) throws SQLException {
         String query = new QueryBuilder()
                 // SELECT * FROM user_role INNER JOIN user ON user_role.id = user.role_id WHERE user.id = ?;
                 .selectAll()
@@ -39,7 +38,7 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
                 .where()
                 .condition(USER_TABLE, ID)
                 .build();
-        return getEntityByQuery(query, Objects.toString(userId, null));
+        return getEntityByQuery(query, (statement) -> statement.setLong(1, userId));
     }
 
     @Override
