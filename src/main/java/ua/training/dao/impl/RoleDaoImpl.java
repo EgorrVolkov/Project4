@@ -75,6 +75,7 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
     protected Role getEntityFromResultSet(ResultSet resultSet) throws SQLException {
         long id = resultSet.getLong(ID);
         String name = resultSet.getString(NAME);
+        // TODO this is done by RoleProxy, but can be done by Role. Find out what's the purpose and difference:
         return new RoleProxy.RoleBuilder()
                 .setId(id)
                 .setName(name)

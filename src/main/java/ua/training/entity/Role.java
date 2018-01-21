@@ -33,7 +33,6 @@ public class Role implements Entity<Long> {
         this.users = users;
     }
 
-
     public static final class RoleBuilder {
         private Long id;
         private String name;
