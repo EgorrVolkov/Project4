@@ -1,6 +1,12 @@
 package ua.training.entity;
 
-import ua.training.entity.proxy.UserProxy;
+import ua.training.dao.UserDao;
+import ua.training.dao.factory.DaoFactory;
+import ua.training.dao.factory.DataSourceFactory;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class User implements Entity<Long> {
     private Long id;
@@ -9,7 +15,7 @@ public class User implements Entity<Long> {
     private String password;
     private String firstName;
     private String lastName;
-    private Role role; // TODO role field assigned only on signIn stage, is it ok?
+    private int roleId;
 
     @Override
     public Long getId() {
@@ -61,12 +67,24 @@ public class User implements Entity<Long> {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoleId(int roleId) { // TODO unnecessary?
+        this.roleId = roleId;
+    }
+
+    public String getRoleNameByUserId() {
+        DataSource dataSource = DataSourceFactory.getInstance().getDataSource();
+        try (Connection connection = dataSource.getConnection()) {
+            DaoFactory daoFactory = DaoFactory.getDaoFactory(connection);
+            UserDao userDao = daoFactory.createUserDao();
+            return userDao.getRoleNameByUserId(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static final class UserBuilder {
@@ -76,7 +94,7 @@ public class User implements Entity<Long> {
         private String login;
         private String email;
         private String password;
-        private Role role;
+        private int roleId;
 
         public UserBuilder setId(Long id) {
             this.id = id;
@@ -108,8 +126,8 @@ public class User implements Entity<Long> {
             return this;
         }
 
-        public UserBuilder setRole(Role role) {
-            this.role = role;
+        public UserBuilder setRoleId(int roleId) {
+            this.roleId = roleId;
             return this;
         }
 
@@ -121,19 +139,7 @@ public class User implements Entity<Long> {
             user.setLogin(login);
             user.setEmail(email);
             user.setPassword(password);
-            user.setRole(role);
-            return user;
-        }
-
-        public User buildUserProxy() {
-            UserProxy user = new UserProxy();
-            user.setId(id);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setLogin(login); // TODO necessary?
-            user.setEmail(email);
-            user.setPassword(password);
-            user.setRole(role);
+            user.setRoleId(roleId);
             return user;
         }
     }

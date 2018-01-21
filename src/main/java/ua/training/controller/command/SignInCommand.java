@@ -1,6 +1,5 @@
 package ua.training.controller.command;
 
-import ua.training.entity.Role;
 import ua.training.entity.User;
 import ua.training.exception.LoginNotFoundException;
 import ua.training.service.UserService;
@@ -44,12 +43,12 @@ public class SignInCommand implements Command {
     }
 
     private void setUserRolesIntoSession(HttpServletRequest request, User user) { // TODO enhance!!!
-        Role role = user.getRole();
-        if (USER_ROLE.equals(role.getName())) {
+        String roleName = user.getRoleNameByUserId();
+        if (USER_ROLE.equals(roleName)) {
             request.getSession().setAttribute(USER, true);
-        } else if (MANAGER_ROLE.equals(role.getName())) {
+        } else if (MANAGER_ROLE.equals(roleName)) {
             request.getSession().setAttribute(MANAGER, true);
-        } else if (ENGINEER_ROLE.equals(role.getName())) {
+        } else if (ENGINEER_ROLE.equals(roleName)) {
             request.getSession().setAttribute(ENGINEER, true);
         }
     }

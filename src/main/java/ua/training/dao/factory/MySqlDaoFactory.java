@@ -13,11 +13,6 @@ public class MySqlDaoFactory extends DaoFactory {
     }
 
     @Override
-    public RoleDao createRoleDao() {
-        return RoleDaoImpl.getInstance(connection);
-    }
-
-    @Override
     public UserDao createUserDao() {
         return UserDaoImpl.getInstance(connection);
     }

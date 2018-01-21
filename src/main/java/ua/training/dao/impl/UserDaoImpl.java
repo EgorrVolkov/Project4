@@ -4,7 +4,6 @@ import ua.training.dao.AbstractDao;
 import ua.training.dao.UserDao;
 import ua.training.dao.util.QueryBuilder;
 import ua.training.entity.User;
-import ua.training.entity.proxy.UserProxy;
 
 import java.sql.*;
 
@@ -27,6 +26,28 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
                 .build();
         return getEntityByQuery(query, (statement) -> statement.setString(1, login));
     }
+
+    @Override
+    public String getRoleNameByUserId(Long userId) throws SQLException {
+        String query = new QueryBuilder()
+                // SELECT name FROM user_role INNER JOIN user ON user_role.id = user.role_id WHERE user.id = ?;
+                .select(NAME)
+                .from()
+                .table(USER_ROLE_TABLE)
+                .innerJoin()
+                .table(TABLE)
+                .on()
+                .tableColumn(USER_ROLE_TABLE, ID)
+                .queryEquals()
+                .tableColumn(TABLE, ROLE_ID)
+                .where()
+                .condition(TABLE, ID)
+                .build();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return resultSet.getString(NAME);
+    }
+
 
     public static UserDaoImpl getInstance(Connection connection) {
         return new UserDaoImpl(connection);
@@ -55,13 +76,15 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         String login = resultSet.getString(LOGIN);
         String email = resultSet.getString(EMAIL);
         String password = resultSet.getString(PASSWORD);
-        return new UserProxy.UserBuilder()
+        int userId = resultSet.getInt(ROLE_ID);
+        return new User.UserBuilder()
                 .setId(id)
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setLogin(login)
                 .setEmail(email)
                 .setPassword(password)
-                .buildUserProxy();
+                .setRoleId(userId)
+                .buildUser();
     }
 }

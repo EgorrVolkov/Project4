@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static ua.training.util.constant.general.Parameters.EXCEPTION;
+import static ua.training.util.constant.table.UserConstants.DEFAULT_ROLE_ID;
 
 public class RegistrationCommand implements Command {
 
@@ -26,7 +27,6 @@ public class RegistrationCommand implements Command {
         String login = request.getParameter("login");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
         try {
             userService.register(
                     new User.UserBuilder()
@@ -35,6 +35,7 @@ public class RegistrationCommand implements Command {
                             .setLogin(login)
                             .setEmail(email)
                             .setPassword(password)
+                            .setRoleId(DEFAULT_ROLE_ID)
                             .buildUser()
             );
         } catch (LoginAlreadyExistsException | IncorrectUserDataException e) {
