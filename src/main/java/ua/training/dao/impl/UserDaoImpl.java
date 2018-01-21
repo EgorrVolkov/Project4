@@ -7,7 +7,6 @@ import ua.training.entity.User;
 import ua.training.entity.proxy.UserProxy;
 
 import java.sql.*;
-import java.util.List;
 
 import static ua.training.util.constant.table.UserConstants.*;
 
@@ -27,31 +26,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
                 .condition(TABLE, LOGIN)
                 .build();
         return getEntityByQuery(query, login);
-    }
-
-    @Override
-    public void setUserRole(Long userId, Long roleId) {
-        String query = new QueryBuilder()
-                .insert()
-                .into()
-                .table(USER_ROLE_TABLE)
-                .insertValues(new String[]{USER_COLUMN, ROLE_COLUMN})
-                .build();
-        try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setLong(1, userId);
-            statement.setLong(2, roleId);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public List<User> findByRole(Long roleId) throws SQLException { // TODO implement via QueryBuilder!
-        String query = "SELECT * FROM user \n" +
-                "INNER JOIN user_role ON user_role.id = user.role_id\n" +
-                "where user_role.id = ?";
-        return getEntityListByQuery(query, roleId);
     }
 
     public static UserDaoImpl getInstance(Connection connection) {

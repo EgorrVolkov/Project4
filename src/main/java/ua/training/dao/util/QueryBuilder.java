@@ -189,52 +189,6 @@ public class QueryBuilder {
         return this;
     }
 
-    public QueryBuilder orderBy(String column) {
-        query
-                .append("ORDER BY")
-                .append(" ")
-                .append(column);
-        return this;
-    }
-
-    public QueryBuilder limit(long limit, long offset) {
-        query
-                .append("limit")
-                .append(" ")
-                .append(limit)
-                .append(" ")
-                .append("offset")
-                .append(" ")
-                .append(offset);
-        return this;
-    }
-
-    public QueryBuilder count() {
-        query
-                .append("count(*)")
-                .append(" ");
-        return this;
-    }
-
-    public QueryBuilder count(String columnName) {
-        query
-                .append("count")
-                .append("(")
-                .append(columnName)
-                .append(")")
-                .append(" ");
-        return this;
-    }
-
-    public QueryBuilder as(String alias) {
-        query
-                .append("as")
-                .append(" ")
-                .append(alias)
-                .append(" ");
-        return this;
-    }
-
     public String build() {
         return query.toString();
     }

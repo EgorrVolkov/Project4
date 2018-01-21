@@ -122,19 +122,6 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
         return null;
     }
 
-    public List<T> getEntityListByQuery(String query, Long introducedId) throws SQLException {
-        List<T> result = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setLong(1, introducedId);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    result.add(getEntityFromResultSet(resultSet));
-                }
-            }
-        }
-        return result;
-    }
-
     protected abstract String[] getParameterNames();
 
     protected abstract void setEntityParameters(T entity, PreparedStatement statement) throws SQLException;

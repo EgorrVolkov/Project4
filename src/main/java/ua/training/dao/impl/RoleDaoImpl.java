@@ -24,18 +24,6 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
     }
 
     @Override
-    public Role findByName(String value) throws SQLException {
-        String query = new QueryBuilder()
-                .selectAll()
-                .from()
-                .table(ROLE_TABLE)
-                .where()
-                .condition(ROLE_TABLE, NAME)
-                .build();
-        return getEntityByQuery(query, value);
-    }
-
-    @Override
     public Role findByUser(Long userId) throws SQLException {
         String query = new QueryBuilder()
                 // SELECT * FROM user_role INNER JOIN user ON user_role.id = user.role_id WHERE user.id = ?;

@@ -3,12 +3,7 @@ package ua.training.dao;
 import ua.training.entity.User;
 
 import java.sql.SQLException;
-import java.util.List;
 
-public interface UserDao extends CrudDao<User, Long> {
+public interface UserDao extends CrudDao<User, Long> { // TODO ?
     User findByLogin(String login) throws SQLException;
-
-    void setUserRole(Long userId, Long roleId);
-
-    List<User> findByRole(Long id) throws SQLException;
 }
