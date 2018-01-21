@@ -2,7 +2,6 @@ package ua.training.controller;
 
 import ua.training.controller.command.CommandCreator;
 import ua.training.util.constant.general.Pages;
-import ua.training.util.constant.general.Parameters;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
