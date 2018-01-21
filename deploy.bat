@@ -1,0 +1,1 @@
+mvn deploy -DaltDeploymentRepository=snapshot-repo::default::file:../folder_to_deploy_to
