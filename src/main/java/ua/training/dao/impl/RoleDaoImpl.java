@@ -4,7 +4,6 @@ import ua.training.dao.AbstractDao;
 import ua.training.dao.RoleDao;
 import ua.training.dao.util.QueryBuilder;
 import ua.training.entity.Role;
-import ua.training.entity.proxy.RoleProxy;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -75,10 +74,9 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
     protected Role getEntityFromResultSet(ResultSet resultSet) throws SQLException {
         long id = resultSet.getLong(ID);
         String name = resultSet.getString(NAME);
-        // TODO this is done by RoleProxy, but can be done by Role. Find out what's the purpose and difference:
-        return new RoleProxy.RoleBuilder()
+        return new Role.RoleBuilder()
                 .setId(id)
                 .setName(name)
-                .buildRoleProxy();
+                .buildRole();
     }
 }

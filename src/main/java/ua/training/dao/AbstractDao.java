@@ -96,26 +96,6 @@ public abstract class AbstractDao<T extends Entity<Long>> implements CrudDao<T, 
     }
 
     @Override
-    public List<T> findAll(long limit, long offset) throws SQLException {
-        List<T> result = new ArrayList<>();
-        String query = new QueryBuilder()
-                .selectAll()
-                .from()
-                .table(tableName)
-                .limit(limit, offset)
-                .build();
-        try (PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                if (getEntityFromResultSet(resultSet) != null) {
-                    result.add(getEntityFromResultSet(resultSet));
-                }
-            }
-        }
-        return result;
-    }
-
-    @Override
     public void delete(Long id) throws SQLException {
         String query = new QueryBuilder()
                 .delete()

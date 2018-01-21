@@ -76,7 +76,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         statement.setString(3, user.getLogin());
         statement.setString(4, user.getEmail());
         statement.setString(5, user.getPassword());
-        // TODO is it ok? Maybe invoke some method to find by "USER_ROLE" from globalConstants???
         statement.setInt(6, DEFAULT_ROLE_ID);
     }
 

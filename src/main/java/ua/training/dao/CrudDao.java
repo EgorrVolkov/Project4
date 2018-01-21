@@ -14,6 +14,4 @@ public interface CrudDao<T, ID> {
     List<T> findAll() throws SQLException;
 
     void delete(ID id) throws SQLException;
-
-    List<T> findAll(long limit, long offset) throws SQLException;
 }
