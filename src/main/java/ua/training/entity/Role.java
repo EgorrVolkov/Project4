@@ -7,7 +7,7 @@ import java.util.List;
 public class Role implements Entity<Long> {
     private Long id;
     private String name;
-    private List<User> users;
+    private List<User> users; // TODO do we need users in role?
 
     public Long getId() {
         return id;

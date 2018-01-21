@@ -9,7 +9,7 @@ public class User implements Entity<Long> {
     private String password;
     private String firstName;
     private String lastName;
-    private Role role;
+    private Role role; // TODO role field assigned only on signIn stage, is it ok?
 
     @Override
     public Long getId() {

@@ -1,10 +1,8 @@
 package ua.training.service.impl;
 
-import ua.training.dao.RoleDao;
 import ua.training.dao.UserDao;
 import ua.training.dao.factory.DaoFactory;
 import ua.training.dao.factory.DataSourceFactory;
-import ua.training.entity.Role;
 import ua.training.entity.User;
 import ua.training.exception.IncorrectUserDataException;
 import ua.training.exception.LoginAlreadyExistsException;
@@ -20,7 +18,6 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import static ua.training.util.ExceptionMessage.*;
-import static ua.training.util.constant.general.Global.USER_ROLE;
 import static ua.training.util.constant.general.Parameters.X_AUTH_TOKEN;
 
 public class UserServiceImpl implements UserService {
@@ -28,12 +25,8 @@ public class UserServiceImpl implements UserService {
     private UserServiceImpl() {
     }
 
-    private static final class UserServiceImplHolder {
-        private static final UserServiceImpl instance = new UserServiceImpl();
-    }
-
-    public static UserServiceImpl getInstance() {
-        return UserServiceImplHolder.instance;
+    public static UserServiceImpl getInstance() { // TODO is this a singleton? If so, remove other holders.
+        return new UserServiceImpl();
     }
 
     @Override

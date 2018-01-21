@@ -26,7 +26,6 @@
         <label for="password"><fmt:message key="password" bundle="${bundle}"/>:</label>
         <input type="password" id="password" name="password">
     </div>
-    <fmt:message key="signIn" var="buttonValue" bundle="${bundle}"/>
     <button name="command" value="signInPage" type="submit" class="btn btn-primary"><fmt:message key="signIn" bundle="${bundle}"/></button>
     <button name="command" value="registration" type="submit" class="btn btn-primary"><fmt:message key="registration" bundle="${bundle}"/></button>
 </form>
