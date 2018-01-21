@@ -44,9 +44,13 @@ public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
 
     @Override
     public List<Role> findByUser(Long userId) throws SQLException {
-        String query = "SELECT r.* FROM `user_role` ur " +
-                "inner join `role` r ON ur.role = r.id " +
-                "where ur.user = ?";
+        String query = new QueryBuilder()
+        .selectAll()
+        .from()
+        .table(TABLE)
+        .where()
+        .condition(TABLE, ID)
+        .build();
         return getEntityListByQuery(query, userId);
     }
 
